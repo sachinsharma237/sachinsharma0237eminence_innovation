@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Import necessary modules
+  imports: [CommonModule, FormsModule], 
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })

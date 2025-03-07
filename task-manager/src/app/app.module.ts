@@ -12,7 +12,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AppComponent, // Import standalone components
+    AppComponent,
     AuthComponent,
     TaskListComponent
   ],
