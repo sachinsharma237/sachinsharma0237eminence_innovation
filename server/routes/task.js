@@ -8,10 +8,10 @@ module.exports = function (io) {
   // Create Task
   router.post("/", auth, async (req, res) => {
     try {
-      const { title, description } = req.body;
-      const newTask = new Task({ title, description, user: req.user.userId });
+      const { title, description, user } = req.body;
+      const newTask = new Task({ title, description, user: user });
       await newTask.save();
-
+      console.log("newTask", newTask)
       io.emit("task_created", newTask); // Notify all clients
       res.status(201).json(newTask);
     } catch (err) {
@@ -22,7 +22,9 @@ module.exports = function (io) {
   // Get User's Tasks
   router.get("/", auth, async (req, res) => {
     try {
+      console.log("req.userId", req.userId)
       const tasks = await Task.find({ user: req.user.userId });
+      console.log("tasks", tasks)
       res.json(tasks);
     } catch (err) {
       res.status(500).json({ error: err.message });

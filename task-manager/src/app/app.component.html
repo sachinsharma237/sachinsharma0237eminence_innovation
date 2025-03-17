@@ -1,10 +1,9 @@
-<nav>
-  <ul>
-    <li><a routerLink="/auth">Login</a></li>
-    <li><a routerLink="/tasks">My Tasks</a></li>
-  </ul>
-</nav>
-
-<div class="container">
+<div class="header-container">
+    <nav class="navbar">
+      <a routerLink="/tasks" class="brand">Task Manager</a>
+      <button *ngIf="isLoggedIn()" (click)="logout()" class="logout-btn">Logout</button>
+    </nav>
+  </div>
+  
   <router-outlet></router-outlet>
-</div>
+  

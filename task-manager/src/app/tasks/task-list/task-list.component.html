@@ -1,0 +1,19 @@
+<h2 class="task-heading">Your Tasks</h2>
+
+<a routerLink="/tasks/add" class="add-task-btn">➕ Add Task</a>
+
+<ul class="task-list">
+  <li *ngFor="let task of tasks" class="task-item">
+    <div>
+      <h3>{{ task.title }}</h3>
+      <p>{{ task.description }}</p>
+      <span class="status" [ngClass]="{ completed: task.status === 'completed' }">
+        {{ task.status }}
+      </span>
+    </div>
+    <div class="actions">
+      <!-- <a [routerLink]="['/tasks/edit', task.id]" class="edit-btn">✏ Edit</a> -->
+      <button (click)="deleteTask(task)" class="delete-btn">❌ Delete</button>
+    </div>
+  </li>
+</ul>

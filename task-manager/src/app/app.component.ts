@@ -1,14 +1,22 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterOutlet, NgIf],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Task Manager';
+  constructor(private router: Router) {}
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token'); // If token exists, user is logged in
+  }
+
+  logout(): void {
+    localStorage.removeItem('token'); // Remove token
+    this.router.navigate(['/login']); // Redirect to login
+  }
 }
